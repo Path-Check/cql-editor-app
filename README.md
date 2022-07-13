@@ -1,5 +1,7 @@
 # CQL Editor App
 
+<img align="right" src="./docs/screenshots/3.Results.png" data-canonical-src="./docs/screenshots/1.Home.png" width="350px"/>
+
 A simple Android native application to Compile CQL. 
 
 # Development Overview
