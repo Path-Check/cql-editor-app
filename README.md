@@ -4,6 +4,10 @@
 
 A simple Android native application to Compile CQL. 
 
+# Releases 
+
+Check the latest on the [Release Directory](https://github.com/Path-Check/cql-editor-app/releases)
+
 # Development Overview
 
 ## Setup
