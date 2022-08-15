@@ -1,46 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <org.pathcheck.cqleditorapp.LineNumberedEditText
-        android:id="@+id/etCode"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:ems="10"
-        android:textSize="14sp"
-        android:gravity="start|top"
-        android:text="Results will show here test"
-        android:fontFamily="serif-monospace"
-        android:background="@null"
-        android:autofillHints=""
-        android:inputType="textMultiLine" />
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btCompile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Compile"
-         />
+        <org.pathcheck.cqleditorapp.LineNumberedEditText
+            android:id="@+id/etCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textSize="14sp"
+            android:gravity="start|top"
+            android:text="Results will show here test"
+            android:fontFamily="serif-monospace"
+            android:background="@null"
+            android:autofillHints=""
+            android:inputType="textMultiLine" />
 
-    <TextView
-        android:id="@+id/tvResults"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:textSize="14sp"
-        android:breakStrategy="high_quality"
-        android:fontFamily="monospace"
-        android:text="Results will show here" />
-
-
-</LinearLayout>
+        <Button
+            android:id="@+id/btCompile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Compile"
+             />
+        <TextView
+            android:id="@+id/tvResults"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:textSize="14sp"
+            android:breakStrategy="high_quality"
+            android:fontFamily="monospace"
+            android:text="Results will show here" />
+    </LinearLayout>
+</layout>
