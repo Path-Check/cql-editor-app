@@ -38,12 +38,12 @@ android {
 dependencies {
     implementation 'javax.xml.stream:stax-api:1.0-2'
 
-    implementation 'info.cqframework:elm:2.0.0-SNAPSHOT'
-    implementation 'info.cqframework:elm-jackson:2.0.0-SNAPSHOT'
-    implementation 'info.cqframework:model:2.0.0-SNAPSHOT'
-    implementation 'info.cqframework:model-jackson:2.0.0-SNAPSHOT'
-    implementation 'info.cqframework:fhir-r4:2.0.0-SNAPSHOT'
-    implementation 'info.cqframework:cql-to-elm:2.0.0-SNAPSHOT'
+    implementation 'info.cqframework:elm:2.0.0'
+    implementation 'info.cqframework:elm-jackson:2.0.0'
+    implementation 'info.cqframework:model:2.0.0'
+    implementation 'info.cqframework:model-jackson:2.0.0'
+    implementation 'info.cqframework:fhir-r4:2.0.0'
+    implementation 'info.cqframework:cql-to-elm:2.0.0'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
