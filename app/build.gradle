@@ -12,7 +12,7 @@ android {
         minSdk 22
         targetSdk 32
         versionCode 2
-        versionName "1.1"
+        versionName "0.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,6 +37,13 @@ android {
         exclude 'META-INF/NOTICE.md'
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/sun-jaxb.episode'
+    }
+}
+
+configurations {
+    all {
+        exclude module: 'xpp3'
+        exclude group: 'org.apache.httpcomponents'
     }
 }
 
