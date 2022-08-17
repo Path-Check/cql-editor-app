@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,32 +11,65 @@
         android:paddingRight="10dp"
         tools:context=".MainActivity">
 
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tabLayout"
+            app:tabMode="fixed">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tbCode"
+                android:text="CQL Library">
+            </com.google.android.material.tabs.TabItem>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tbData"
+                android:text="DATA Bundle">
+            </com.google.android.material.tabs.TabItem>
+        </com.google.android.material.tabs.TabLayout>
+
         <org.pathcheck.cqleditorapp.LineNumberedEditText
-            android:id="@+id/etCode"
+            android:id="@+id/etTextEditor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:ems="10"
-            android:textSize="14sp"
-            android:gravity="start|top"
-            android:text="Results will show here test"
-            android:fontFamily="serif-monospace"
-            android:background="@null"
             android:autofillHints=""
-            android:inputType="textMultiLine" />
+            android:background="@null"
+            android:ems="10"
+            android:fontFamily="serif-monospace"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:text="Results will show here test"
+            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btCompile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Compile"
-             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edExpressionName"
+                android:layout_weight="1"
+                android:text="CompletedImmunization">
+            </EditText>
+
+            <Button
+                android:id="@+id/btCompile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Evaluate" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tvResults"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:textSize="14sp"
             android:breakStrategy="high_quality"
             android:fontFamily="monospace"

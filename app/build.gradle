@@ -35,6 +35,8 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE.md'
         exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/sun-jaxb.episode'
     }
 }
 
@@ -47,6 +49,20 @@ dependencies {
     implementation 'info.cqframework:model-jackson:2.0.0'
     implementation 'info.cqframework:fhir-r4:2.0.0'
     implementation 'info.cqframework:cql-to-elm:2.0.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3'
+    implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.13.3'
+
+    implementation 'org.opencds.cqf.cql:engine:2.0.0-SNAPSHOT'
+    implementation('org.opencds.cqf.cql:evaluator:2.0.0-SNAPSHOT') {
+        exclude module: 'jcl-over-slf4j'
+    }
+    implementation('org.opencds.cqf.cql:evaluator.fhir:2.0.0-SNAPSHOT') {
+        exclude module: 'jcl-over-slf4j'
+    }
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
