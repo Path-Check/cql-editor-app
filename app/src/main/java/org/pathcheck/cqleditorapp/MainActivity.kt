@@ -39,19 +39,23 @@ class MainActivity : AppCompatActivity() {
     binding.edExpressionName.setText("CompletedImmunization")
 
     binding.btCompile.setOnClickListener {
-      tabs.set(binding.tabLayout.selectedTabPosition, binding.etTextEditor.text.toString());
+      save(binding.tabLayout.selectedTabPosition)
       compile()
     }
 
     binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-      override fun onTabSelected(tab: TabLayout.Tab?) {
-        binding.etTextEditor.setText(tabs.get(tab!!.position))
-      }
-      override fun onTabUnselected(tab: TabLayout.Tab?) {
-        tabs.set(tab!!.position, binding.etTextEditor.text.toString())
-      }
+      override fun onTabSelected(tab: TabLayout.Tab?) { load(tab!!.position) }
+      override fun onTabUnselected(tab: TabLayout.Tab?) { save(tab!!.position) }
       override fun onTabReselected(tab: TabLayout.Tab?) {}
     })
+  }
+
+  private fun load(tabPosition: Int) {
+    binding.etTextEditor.setText(tabs.get(tabPosition))
+  }
+
+  private fun save(tabPosition: Int) {
+    tabs.set(tabPosition, binding.etTextEditor.text.toString());
   }
 
   @OptIn(ExperimentalTime::class)
@@ -95,13 +99,13 @@ class MainActivity : AppCompatActivity() {
     val (result, evaluateTime) = measureTimedValue {
       evalContext
         .resolveExpressionRef(binding.edExpressionName.text.toString())
-        .evaluate(evalContext) as Boolean
+        .evaluate(evalContext)
     }
 
     binding.tvResults.text = reportSucess(compiler, loadTime, compileTime, mapTime, dataTime, prepTime, evaluateTime, result)
   }
 
-  private fun reportSucess(compiler: CqlCompiler, load: Duration, compile: Duration, map: Duration, data: Duration, prep: Duration, evaluate: Duration, result: Boolean): String {
+  private fun reportSucess(compiler: CqlCompiler, load: Duration, compile: Duration, map: Duration, data: Duration, prep: Duration, evaluate: Duration, result: Any): String {
     return buildString {
       appendLine("Compiled sucessfully: Result $result")
       appendLine("  Fhir Context  ${load.inWholeMilliseconds / 1000.0f} seconds")
