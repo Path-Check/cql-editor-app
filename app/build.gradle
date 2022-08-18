@@ -57,12 +57,6 @@ dependencies {
     implementation 'info.cqframework:fhir-r4:2.0.0'
     implementation 'info.cqframework:cql-to-elm:2.0.0'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3'
-    implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.13.3'
-
     implementation 'org.opencds.cqf.cql:engine:2.0.0-SNAPSHOT'
     implementation('org.opencds.cqf.cql:evaluator:2.0.0-SNAPSHOT') {
         exclude module: 'jcl-over-slf4j'
