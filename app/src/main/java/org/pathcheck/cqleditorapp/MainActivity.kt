@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     tvResults = findViewById(R.id.tvResults)
     edEditor = findViewById(R.id.etTextEditor)
     edExpression = findViewById(R.id.edExpressionName)
+    btCompile = findViewById(R.id.btCompile)
+    tabLayout = findViewById(R.id.tabLayout)
 
     tabModel.set(TabType.CODE.value, assets.open("ImmunityCheck-1.0.0.cql").bufferedReader().readText())
     tabModel.set(TabType.DATA.value, assets.open("ImmunizationHistory.json").bufferedReader().readText())
