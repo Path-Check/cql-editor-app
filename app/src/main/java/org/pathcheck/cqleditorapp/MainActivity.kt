@@ -1,55 +1,63 @@
 package org.pathcheck.cqleditorapp
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-import org.pathcheck.cqleditorapp.databinding.ActivityMainBinding
-
 class MainActivity : AppCompatActivity() {
-  private lateinit var binding: ActivityMainBinding
+  private lateinit var tvResults: TextView;
+  private lateinit var edEditor: EditText;
+  private lateinit var edExpression: EditText;
+  private lateinit var btCompile: Button;
+  private lateinit var tabLayout: TabLayout;
 
-  enum class TabEntry (val value: Int) {
+  enum class TabType (val value: Int) {
     CODE(0),
     DATA(1)
   }
 
-  private var tabs = mutableListOf("","")
+  private var tabModel = mutableListOf("","")
 
   @OptIn(DelicateCoroutinesApi::class)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    tabs.set(TabEntry.CODE.value, assets.open("ImmunityCheck-1.0.0.cql").bufferedReader().readText())
-    tabs.set(TabEntry.DATA.value, assets.open("ImmunizationHistory.json").bufferedReader().readText())
+    setContentView(R.layout.activity_main)
 
-    binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+    tvResults = findViewById(R.id.tvResults)
+    edEditor = findViewById(R.id.etTextEditor)
+    edExpression = findViewById(R.id.edExpressionName)
 
-    binding.etTextEditor.setText(tabs.get(TabEntry.CODE.value))
-    binding.edExpressionName.setText("CompletedImmunization")
+    tabModel.set(TabType.CODE.value, assets.open("ImmunityCheck-1.0.0.cql").bufferedReader().readText())
+    tabModel.set(TabType.DATA.value, assets.open("ImmunizationHistory.json").bufferedReader().readText())
 
-    binding.btCompile.setOnClickListener {
-      save(binding.tabLayout.selectedTabPosition)
-      binding.tvResults.text = "Compiling..."
-      binding.btCompile.isEnabled = false
+    edEditor.setText(tabModel.get(TabType.CODE.value))
+    edExpression.setText("CompletedImmunization")
+
+    btCompile.setOnClickListener {
+      save(tabLayout.selectedTabPosition)
+      tvResults.text = "Compiling..."
+      btCompile.isEnabled = false
       GlobalScope.launch(Dispatchers.IO) {
         val report = CqlBuildReporter().run(
-          tabs.get(TabEntry.CODE.value),
-          tabs.get(TabEntry.DATA.value),
-          binding.edExpressionName.text.toString()
+          tabModel.get(TabType.CODE.value),
+          tabModel.get(TabType.DATA.value),
+          edExpression.text.toString()
         )
         GlobalScope.launch(Dispatchers.Main) {
-          binding.tvResults.text = report;
-          binding.btCompile.isEnabled = true
+          tvResults.text = report;
+          btCompile.isEnabled = true
         }
       }
     }
 
-    binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+    tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
       override fun onTabSelected(tab: TabLayout.Tab?) { load(tab!!.position) }
       override fun onTabUnselected(tab: TabLayout.Tab?) { save(tab!!.position) }
       override fun onTabReselected(tab: TabLayout.Tab?) {}
@@ -57,10 +65,10 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun load(tabPosition: Int) {
-    binding.etTextEditor.setText(tabs.get(tabPosition))
+    edEditor.setText(tabModel.get(tabPosition))
   }
 
   private fun save(tabPosition: Int) {
-    tabs.set(tabPosition, binding.etTextEditor.text.toString());
+    tabModel.set(tabPosition, edEditor.text.toString());
   }
 }
