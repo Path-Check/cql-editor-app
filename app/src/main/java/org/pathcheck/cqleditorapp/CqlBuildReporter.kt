@@ -14,7 +14,7 @@ import org.opencds.cqf.cql.evaluator.engine.elm.LibraryMapper
 class CqlBuildReporter {
   @OptIn(ExperimentalTime::class)
   fun run(code: String, data: String, expression: String): String {
-    val (context, loadTime) = measureTimedValue {
+    val (_, loadTime) = measureTimedValue {
       FhirContext.forCached(FhirVersionEnum.R4)
     }
 
