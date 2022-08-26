@@ -6,7 +6,6 @@ import ca.uhn.fhir.context.FhirContext
 import ca.uhn.fhir.context.FhirVersionEnum
 import com.google.android.fhir.FhirEngine
 import com.google.android.fhir.FhirEngineProvider
-import com.google.android.fhir.delete
 import com.google.android.fhir.workflow.FhirOperator
 import java.io.InputStream
 import kotlinx.coroutines.runBlocking
