@@ -54,6 +54,7 @@ dependencies {
     implementation 'info.cqframework:model:2.1.0-SNAPSHOT'
     implementation 'info.cqframework:model-jackson:2.1.0-SNAPSHOT'
     implementation 'info.cqframework:fhir-r4:2.1.0-SNAPSHOT'
+    implementation 'info.cqframework:qdm:2.1.0-SNAPSHOT'
     implementation 'info.cqframework:cql-to-elm:2.1.0-SNAPSHOT'
 
     implementation 'org.opencds.cqf.cql:engine:2.0.0-SNAPSHOT'
