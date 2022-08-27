@@ -18,7 +18,6 @@ package com.google.android.fhir.workflow
 
 import ca.uhn.fhir.context.FhirContext
 import ca.uhn.fhir.context.FhirVersionEnum
-import ca.uhn.fhir.rest.client.impl.GenericClient
 import com.google.android.fhir.FhirEngine
 import java.util.function.Supplier
 import org.hl7.fhir.instance.model.api.IBaseParameters
