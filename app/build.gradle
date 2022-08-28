@@ -8,7 +8,8 @@ android {
 
     defaultConfig {
         applicationId "org.pathcheck.cqleditorapp"
-        minSdk 22
+        // Call to polymorphic signature of VarHandle are only supported starting with Android P
+        minSdk 28
         targetSdk 33
         versionCode 5
         versionName "0.0.5"
@@ -52,6 +53,10 @@ dependencies {
 
     // Parsing of CQL Library XML needs Xerces.
     implementation group: 'xerces', name: 'xercesImpl', version: '2.12.2'
+
+    // Required to run FhirPath (also requires minSDK of 26).
+    // Version 3.0 uses java.lang.System.Logger, which is not available on Android
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.9.1'
 
     implementation 'info.cqframework:elm:2.1.0-SNAPSHOT'
     implementation 'info.cqframework:elm-jackson:2.1.0-SNAPSHOT'
