@@ -11,8 +11,8 @@ android {
         // Call to polymorphic signature of VarHandle are only supported starting with Android P
         minSdk 28
         targetSdk 33
-        versionCode 5
-        versionName "0.0.5"
+        versionCode 6
+        versionName "0.0.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
